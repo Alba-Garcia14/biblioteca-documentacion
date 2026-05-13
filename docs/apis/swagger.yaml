@@ -1,0 +1,104 @@
+openapi: 3.0.0
+info:
+  title: API Biblioteca
+  description: Endpoints para gestión de libros y préstamos
+  version: 1.0.0
+  contact:
+    name: Equipo de Desarrollo
+    email: dev@biblioteca.com
+
+servers:
+  - url: http://localhost:3000/api
+    description: Servidor de desarrollo (referencia)
+
+paths:
+  /libros:
+    get:
+      summary: Listar todos los libros
+      tags:
+        - Libros
+      responses:
+        '200':
+          description: Lista de libros disponibles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Libro'
+    post:
+      summary: Agregar nuevo libro
+      tags:
+        - Libros
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LibroInput'
+      responses:
+        '201':
+          description: Libro creado exitosamente
+        '400':
+          description: Datos inválidos
+
+  /prestamos:
+    post:
+      summary: Registrar un préstamo
+      tags:
+        - Préstamos
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - usuarioId
+                - libroId
+              properties:
+                usuarioId:
+                  type: integer
+                  example: 123
+                libroId:
+                  type: integer
+                  example: 456
+      responses:
+        '201':
+          description: Préstamo registrado
+        '400':
+          description: Libro no disponible
+        '404':
+          description: Usuario o libro no encontrado
+
+components:
+  schemas:
+    Libro:
+      type: object
+      properties:
+        isbn:
+          type: string
+          example: "978-3-16-148410-0"
+        titulo:
+          type: string
+          example: "Introducción a la Programación"
+        autor:
+          type: string
+          example: "Juan Pérez"
+        disponible:
+          type: boolean
+          example: true
+
+    LibroInput:
+      type: object
+      required:
+        - isbn
+        - titulo
+        - autor
+      properties:
+        isbn:
+          type: string
+        titulo:
+          type: string
+        autor:
+          type: string
