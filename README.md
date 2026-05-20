@@ -26,3 +26,8 @@ Sistema para gestionar préstamos de libros en una biblioteca pública.
 
 ## Licencia
 MIT
+
+(https://miro.com/app/live-embed/uXjVHRm9i38=/?embedMode=view_only_without_ui&moveToViewport=-20663%2C-6743%2C36426%2C16186&embedId=493624246610)
+
+<iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVHRm9i38=/?embedMode=view_only_without_ui&moveToViewport=-20663,-6743,36426,16186&embedId=493624246610" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
+
