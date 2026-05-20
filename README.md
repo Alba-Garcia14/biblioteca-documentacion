@@ -14,6 +14,22 @@ Sistema para gestionar préstamos de libros en una biblioteca pública.
 ### Diagrama de Clases
 ![Diagrama de Clases](docs/diagramas/diagrama-clases.png)
 
+## 📋 Estructura de Desglose del Trabajo (EDT/WBS)
+
+### Diagrama Jerárquico
+![EDT Biblioteca Digital](docs/diagramas/EDT-Biblioteca-v1.0.png)
+
+*EDT creada en Miro con asistencia de IA - [Ver en Miro](https://miro.com/app/board/XXXXX)*
+
+### Lista de Paquetes de Trabajo
+| Código | Entregable | Owner | Estimación | Estado |
+|--------|-----------|-------|------------|--------|
+| 1.1 | Plan de Proyecto | @pm | 8h | ✅ |
+| 2.1 | Modelo de Datos | @maria | 16h | 🔄 |
+| 3.1 | Módulo Libros | @carlos | 40h | ⚪ |
+
+🔗 [Ver EDT interactiva en Miro](https://miro.com/app/board/XXXXX)
+
 ## API Documentation
 📖 [Especificación Swagger (OpenAPI)](docs/api/swagger.yaml)
 
