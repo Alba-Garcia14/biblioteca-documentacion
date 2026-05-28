@@ -1,7 +1,6 @@
 # 🗓️ Cronograma Gantt - Biblioteca Digital v1.0
 
 ```mermaid
-
 gantt
     title Biblioteca Digital v1.0 - Cronograma de Desarrollo
     dateFormat  YYYY-MM-DD
@@ -28,9 +27,10 @@ gantt
     A10: Despliegue staging   :         a10, after a9, 1d
     A11: Documentación final  :         a11, after a10, 1d
     A12: Cierre del proyecto  :milestone, m1, after a11, 0d
-    ```
+```
 
-    💡 Leyenda de estados
+
+💡 Leyenda de estados
 ✅ Gris (:done): Completado
 
 🔵 Azul (:active): En progreso
