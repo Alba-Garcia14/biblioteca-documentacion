@@ -713,3 +713,560 @@ Si en cualquier momento se cumple UNA de estas condiciones, detener y reevaluar:
 🔹 **Entregables tangibles**: Código, documento, configuración, test (no "progreso", "avance")
 🔹 **Duración estimable**: 4-40 horas ideal; si >40h, descomponer más
 🔹 **Asignable**: Una persona o par puede ejecutarla sin dependencias externas no gestionadas
+
+# 🗓️ Cronograma Base - Biblioteca Digital v1.0
+
+## 📊 Vista Resumen por Sprint
+
+### Sprint 1: Fundamentos (01-14 jun 2026)
+| Semana | Actividades Clave | Hitos | Owner Principal |
+|--------|-----------------|-------|----------------|
+| 1 | • Diseñar ERD<br>• Esquema BD<br>• Crear tabla libros | ✅ Modelo de datos aprobado | María |
+| 2 | • GET /libros<br>• POST /libros + validación<br>• Documentar swagger<br>• Tests integración | ✅ API base funcional + documentada | María + Carlos |
+
+### Sprint 2: Flujo de Préstamo (15-28 jun 2026)
+| Semana | Actividades Clave | Hitos | Owner Principal |
+|--------|-----------------|-------|----------------|
+| 3 | • Autenticación bibliotecarios<br>• Lógica de disponibilidad<br>• Frontend: listado + búsqueda | ✅ Módulo Libros completo | María + Carlos |
+| 4 | • Frontend: formulario préstamo<br>• Endpoint POST /prestamos<br>• Pruebas E2E | ✅ Flujo préstamo funcional en staging | Carlos + Ana |
+
+### Sprint 3: Pulido + Lanzamiento (29 jun - 12 jul 2026)
+| Semana | Actividades Clave | Hitos | Owner Principal |
+|--------|-----------------|-------|----------------|
+| 5 | • Mejoras UX (validaciones en tiempo real)<br>• Pruebas de usabilidad con 3 usuarios | ✅ Feedback de usuarios incorporado | Carlos + Ana |
+| 6 | • Corrección de bugs críticos<br>• Despliegue en producción<br>• Documentación final | 🎯 MVP lanzado + aceptado | Equipo completo |
+
+## 🔗 Dependencias Críticas (Camino Crítico)
+```mermaid
+graph LR
+    A[ERD aprobado] --> B[Esquema BD]
+    B --> C[Tabla libros]
+    C --> D[GET /libros]
+    D --> E[POST /libros]
+    E --> F[swagger.yaml]
+    F --> G[Tests integración]
+    G --> H[UAT usuarios]
+    H --> I[Despliegue producción]
+
+biblioteca-documentacion/
+├── docs/
+│   ├── resources/
+│   │   ├── matriz-asignacion.md      ← Tabla de owners, horas, % carga
+│   │   ├── capacidad-real.md         ← Cálculo semanal con descuento de reuniones/buffer
+│   │   ├── inventario-tecnico.md     ← Licencias, cloud, APIs, costes recurrentes
+│   │   └── alertas-sobreasignacion.md ← Registro de desequilibrios y acciones correctivas
+│   └── ...
+├── .github/
+│   └── ISSUE_TEMPLATE/
+│       └── resource-request.md       ← Plantilla para solicitar nuevo recurso/herramienta
+│
+└── projects/
+    └── biblioteca-kanban             ← Campo personalizado "Owner" + "Carga (%)"
+
+# 👥 Matriz de Asignación de Recursos - Sprint [X]
+
+## 📊 Capacidad del Equipo (Horas/Semana)
+| Miembro | Rol | Horas Teóricas | - Reuniones | - Admin/Contexto | - Buffer | ✅ Capacidad Real |
+|---------|-----|---------------|------------|-----------------|----------|-----------------|
+| María | Backend | 40h | 6h | 4h | 4h | 26h |
+| Carlos | Frontend | 40h | 6h | 4h | 4h | 26h |
+| Ana | QA | 20h* | 3h | 2h | 2h | 13h |
+| Pedro | DevOps | 10h* | 1.5h | 1h | 1h | 6.5h |
+
+*\* Tiempo compartido con otros proyectos*
+
+## 📋 Asignación por Tarea
+| Tarea | Owner | Apoyo | Horas | % Carga Owner | ¿Viable? |
+|-------|-------|-------|-------|--------------|----------|
+| [ID] Descripción | @usuario | @usuario | Xh | XX% | 🟢//🔴 |
+
+## ⚠️ Alertas de Sobreasignación
+| Miembro | Carga Total | Capacidad | Desviación | Acción Correctiva |
+|---------|------------|-----------|-----------|------------------|
+| @usuario | Xh | Yh | +Z% | Reasignar/Desplazar/Reducir scope |
+
+> 📝 *Actualizar cada lunes en Sprint Planning. Carga >80% requiere justificación y aprobación del PM.* 
+
+# ⏱️ Registro de Estimaciones de Duración - Biblioteca Digital v1.0
+
+## 📊 Modelo de Capacidad Efectiva (por rol)
+| Rol | Horas Teóricas/Semana | - Reuniones | - Admin/Contexto | - Buffer | ✅ Capacidad Efectiva/Día |
+|-----|---------------------|------------|-----------------|----------|-------------------------|
+| Backend Dev | 40h | 6h | 4h | 4h | 6.5h (65%) |
+| Frontend Dev | 40h | 6h | 4h | 4h | 6.5h (65%) |
+| QA | 20h* | 3h | 2h | 2h | 3.25h (65%) |
+| DevOps | 10h* | 1.5h | 1h | 1h | 1.6h (65%) |
+
+*\* Tiempo compartido con otros proyectos*
+
+## 📋 Estimaciones por Tarea (Sprint 1)
+| ID Tarea | Descripción | Esfuerzo (h) | Técnica | Recursos | Duración Estimada | Factores de Ajuste | Duración Final |
+|----------|-------------|-------------|---------|----------|------------------|-------------------|---------------|
+| 2.1.1 | Diseñar ERD | 4h | Planning Poker | María | 0.6 días | - | **1 día** |
+| 3.1.1.2 | GET /libros | 6h | PERT (O=3,M=6,P=12) | María | 0.9 días | ×1.2 (API externa) | **1.5 días** |
+| 3.1.1.3 | POST /libros + validación | 8h | Análoga + histórico | María | 1.2 días | ×1.3 (fallback) +15% buffer | **2.5 días** |
+| 4.1.1 | Tests integración | 4h | Descomposición | Ana + María | 0.6 días | ×1.1 (coordinación) | **1 día** |
+
+## 🔄 Factores Históricos del Equipo (Actualizado cada sprint)
+| Sprint | Factor de Precisión Promedio (Real ÷ Estimado) | Observaciones |
+|--------|---------------------------------------------|--------------|
+| Sprint 0 (PoC) | 1.45 | Primera vez con stack, curva de aprendizaje alta |
+| Sprint 1 | 1.32 | Mejora visible, pero aún ajustes en estimación de tests |
+| *Objetivo* | ≤1.15 | Estabilidad en estimaciones para sprints futuros |
+
+> 📝 *Actualizar este archivo al finalizar cada sprint con datos reales vs. estimados.* 
+
+# ⚠️ Registro de Riesgos - Biblioteca Digital v1.0
+
+## 🎯 Matriz de Priorización
+| Probabilidad \ Impacto | Bajo (1) | Medio (2) | Alto (3) |
+|----------------------|----------|-----------|----------|
+| **Alta (3)** | 🟡 Monitorear | 🔴 Actuar ya | 🔴 Actuar ya |
+| **Media (2)** | 🟢 Aceptar | 🟡 Monitorear | 🔴 Actuar ya |
+| **Baja (1)** | 🟢 Aceptar | 🟢 Aceptar | 🟡 Monitorear |
+
+## 📋 Riesgos Identificados
+
+### 🔴 Riesgo Crítico #1: Cambio en normativa de protección de datos
+| Campo | Valor |
+|-------|-------|
+| **Descripción** | Nueva regulación GDPR local podría requerir cambios en almacenamiento de datos de usuarios |
+| **Probabilidad** | Media (2) |
+| **Impacto** | Alto (3) → Retraso 2-3 semanas + coste adicional |
+| **Señal de Alerta** | Publicación de borrador de ley en BOE |
+| **Mitigación** | 1. Revisión legal en Sprint 1<br>2. Diseñar privacy-by-default (datos mínimos, encriptación)<br>3. ADR-002: Estrategia de cumplimiento |
+| **Owner** | María López (Sponsor) |
+| **Estado** | 🟡 En mitigación |
+
+### 🔴 Riesgo Crítico #2: API externa de validación ISBN no disponible
+| Campo | Valor |
+|-------|-------|
+| **Descripción** | Servicio gratuito de validación ISBN podría cambiar formato o dejar de funcionar |
+| **Probabilidad** | Alta (3) |
+| **Impacto** | Medio (2) → Funcionalidad degradada, no bloqueo total |
+| **Señal de Alerta** | Error 5xx en logs de validación >5% de peticiones |
+| **Mitigación** | 1. Crear adapter layer para aislar dependencia<br>2. Implementar mock para desarrollo/testing<br>3. Fallback: validación básica por regex si API falla |
+| **Owner** | Carlos Ruiz (PM) |
+| **Estado** | ✅ Mitigado (adapter implementado en Sprint 1) |
+
+### 🟡 Riesgo Medio #3: Rotación de desarrollador clave
+| Campo | Valor |
+|-------|-------|
+| **Descripción** | Uno de los 3 devs asignados podría dejar el proyecto antes de finalizar |
+| **Probabilidad** | Baja (1) |
+| **Impacto** | Alto (3) → Retraso significativo en entrega |
+| **Señal de Alerta** | Ausencias frecuentes, disminución de commits, comentarios en 1:1 |
+| **Mitigación** | 1. Documentación continua en /docs/tech/<br>2. Pair programming en tareas críticas<br>3. Cross-training: cada módulo tiene 2 personas con conocimiento |
+| **Owner** | Carlos Ruiz (PM) |
+| **Estado** | 🟢 Monitoreado |
+
+## 🔄 Proceso de Revisión
+- **Frecuencia**: 15 minutos al inicio de cada Sprint Planning
+- **Participantes**: PM, Tech Lead, Representante de Usuarios
+- **Salida**: Actualización de estado, nuevos riesgos, cierre de riesgos mitigados
+- **Registro**: Issues con etiqueta `risk` en GitHub + actualización de este documento
+
+## 🚨 Plan de Contingencia General
+Si un riesgo 🔴 se materializa:
+1. Activar owner del riesgo en <2 horas
+2. Ejecutar mitigación predefinida o improvisar solución temporal
+3. Comunicar impacto a stakeholders en <24 horas
+4. Actualizar cronograma y presupuesto si es necesario
+5. Documentar lección aprendida en /docs/retro/
+
+
+biblioteca-documentacion/
+├── README.md                          ← Visión general del proyecto
+├── CHARTER.md                         ← Acta de Constitución (aprobada)
+│
+├── docs/
+│   ├── scope/
+│   │   ├── DECLARACION_ALCANCE.md     ← Qué incluye/no incluye
+│   │   ├── WBS.md                     ← Desglose de trabajo
+│   │   └── PROCESO_CAMBIOS.md         ← Flujo de gestión de cambios
+│   │
+│   ├── schedule/
+│   │   ├── CRONOGRAMA.md              ← Hitos + detalle por sprint
+│   │   ├── DEPENDENCIAS.md            ← Matriz de dependencias críticas
+│   │   └── BASELINE_v1.0.md           ← Línea base aprobada (snapshot)
+│   │
+│   ├── risks/
+│   │   ├── REGISTRO_RIESGOS.md        ← Lista viva de riesgos
+│   │   ├── MATRIZ_PROB_IMPACTO.md     ← Visualización de priorización
+│   │   └── PLANES_RESPUESTA.md        ← Acciones para riesgos críticos
+│   │
+│   ├── api/
+│   │   └── swagger.yaml               ← Especificación de API
+│   │
+│   ├── diagramas/
+│   │   ├── arquitectura-c4.drawio     ← Diagrama C4 editable
+│   │   ├── arquitectura-c4.png        ← Versión renderizada
+│   │   └── wbs-diagrama.png           ← WBS visual (opcional)
+│   │
+│   └── manual/
+│       ├── INSTALACION.md             ← Guía para colaboradores
+│       └── CONTRIBUIR.md              ← Cómo proponer cambios
+│
+├── .github/
+│   └── ISSUE_TEMPLATE/
+│       ├── scope-change.md            ← Plantilla para solicitar cambios
+│       └── risk-report.md             ← Plantilla para reportar riesgos
+│
+└── .gitignore 
+
+---
+name: 👨‍💻 Tarea de Desarrollo
+about: Asignar una tarea técnica a un miembro del equipo
+title: "[DEV] Breve descripción de la tarea"
+labels: development, sprint-2
+assignees: [nombre-dev]
+---
+
+## 📋 Descripción Técnica
+¿Qué hay que implementar? Incluir enlaces a:
+- [ ] swagger.yaml (si aplica)
+- [ ] Diagrama de clases en /docs/diagramas/
+- [ ] Criterios de aceptación relacionados
+
+## 🎯 Criterios de Aceptación
+- [ ] El código sigue los estándares del equipo (eslint, prettier)
+- [ ] Tests unitarios con cobertura >80% en lógica nueva
+- [ ] Documentación actualizada en /docs/ si cambia comportamiento
+- [ ] PR revisado por al menos 1 compañero antes de merge
+
+## ⏱️ Estimación y Dependencias
+| Campo | Valor |
+|-------|-------|
+| Estimación (horas) | 8-12h |
+| Dependencias | #12 - Endpoint GET /libros debe estar listo |
+| Bloqueos conocidos | Ninguno |
+
+## 🔗 Recursos
+- [ ] [Guía de estilo del equipo](docs/manual/ESTILO.md)
+- [ ] [Ejemplo de PR bien hecho](https://github.com/.../pull/45)
+- [ ] [Documentación de la API](docs/api/swagger.yaml)
+
+## 📝 Notas para el desarrollador
+> 💡 Tip: Usa la extensión "Swagger Viewer" en VS Code para probar los endpoints mientras desarrollas. 
+
+# ✍️ ACTA DE ACEPTACIÓN FINAL
+## Proyecto: Biblioteca Digital - MVP v1.0
+
+### 1. Identificación
+| Campo | Valor |
+|-------|-------|
+| **Nombre del Proyecto** | Sistema de Gestión Bibliotecaria Digital |
+| **Versión Entregada** | v1.0.0 (Release 2026-09-30) |
+| **Fecha de Entrega** | 30 de septiembre de 2026 |
+| **Sponsor** | María López, Directora de Tecnologías |
+| **Usuario Final Representante** | Ana Gómez, Bibliotecaria Jefe |
+| **Project Manager** | Carlos Ruiz |
+
+---
+
+### 2. Criterios de Aceptación - Validación
+
+| Criterio | Método de Verificación | Resultado | Estado |
+|----------|----------------------|-----------|--------|
+| CRUD de libros funcional | Pruebas manuales + automatizadas | ✅ 100% casos pasando | ✅ Aceptado |
+| Endpoint GET /libros <500ms p95 | Métricas de Postman Monitoring | ✅ 342ms promedio | ✅ Aceptado |
+| Flujo de préstamo en <3 clics | Prueba de usabilidad con 3 usuarios | ✅ 2.4 clics promedio | ✅ Aceptado |
+| swagger.yaml actualizado | Revisión manual + validación online | ✅ Sin errores, 5 endpoints documentados | ✅ Aceptado |
+| Documentación en /docs/ completa | Checklist de entrega | ✅ README, INSTALACION, ADRs presentes | ✅ Aceptado |
+| Sin bugs críticos en staging | Reporte de QA + SonarQube | ✅ 0 bugs críticos, deuda técnica <5% | ✅ Aceptado |
+
+---
+
+### 3. Entregables Confirmados
+
+#### 📦 Código y Configuración
+- [x] Repositorio GitHub: `biblioteca-documentacion` (rama `main` en v1.0.0)
+- [x] Pipeline CI/CD funcional (GitHub Actions)
+- [x] Variables de entorno documentadas en `.env.example`
+
+#### 📚 Documentación
+- [x] README.md con estado y enlaces
+- [x] swagger.yaml validado en editor.swagger.io
+- [x] Diagramas UML en `/docs/diagramas/` (Draw.io + PNG)
+- [x] Guía de instalación y uso en `/docs/manual/`
+- [x] Architecture Decision Records en `/docs/adr/`
+
+#### 🧪 Calidad y Pruebas
+- [x] Cobertura de tests unitarios: 84% (>80% requerido)
+- [x] Reporte de SonarQube: 0 bugs, 2 code smells menores
+- [x] Pruebas de integración ejecutadas en staging
+
+---
+
+### 4. Conocidos / Limitaciones Aceptadas
+
+| Ítem | Descripción | Plan de Resolución |
+|------|-------------|-------------------|
+| ⚠️ Bug menor: validación ISBN falla con prefijos no estándar | Afecta <1% de casos reales | ✅ Documentado en `/docs/tech/conocidos.md`; fix programado para v1.1 |
+| ⚠️ App móvil no incluida | Acordado en cambio CHG-003 | 📅 Planificada para Fase 2 (Q1 2027) |
+| ⚠️ Integración con otras bibliotecas pendiente | Requiere protocolo Z39.50 | 🔍 En investigación técnica; no bloquea MVP |
+
+> ℹ️ *Estos ítems NO impiden la aceptación del MVP, pero quedan registrados para planificación futura.*
+
+---
+
+### 5. Transferencia a Operaciones
+
+#### 👥 Responsables Post-Entrega
+| Rol | Nombre | Contacto | Responsabilidades |
+|-----|--------|----------|------------------|
+| Mantenimiento Técnico | @maria-backend | maria@biblioteca.org | Bugs, actualizaciones, monitoreo |
+| Soporte a Usuarios | Ana Gómez | ana@biblioteca.org | Consultas, capacitación, feedback |
+| Gestión de Cambios | María López | maria.lopez@biblioteca.org | Nuevos requisitos, priorización |
+
+#### 📋 Checklist de Handover Completado
+- [x] Credenciales de acceso entregadas (gestor de contraseñas)
+- [x] Documentación operativa revisada con equipo de soporte
+- [x] Procedimiento de rollback documentado y probado
+- [x] Contactos de escalación definidos y comunicados
+
+---
+
+### 6. Firmas de Aceptación
+
+Al firmar este documento, los abajo firmantes:
+- ✅ Confirman que el producto cumple los criterios de aceptación definidos
+- ✅ Aceptan los "conocidos" listados como limitaciones no bloqueantes
+- ✅ Autorizan el cierre formal del proyecto y liberación de recursos
+
+| Rol | Nombre | Firma | Fecha |
+|-----|--------|-------|-------|
+| **Sponsor / Patrocinador** | María López | __________________ | ___/___/2026 |
+| **Usuario Final Representante** | Ana Gómez | __________________ | ___/___/2026 |
+| **Project Manager** | Carlos Ruiz | __________________ | ___/___/2026 |
+| **Legal / Compliance** (si aplica) | Departamento Jurídico | __________________ | ___/___/2026 |
+
+---
+
+📎 **Anexos:**
+- [ ] Anexo A: Reporte completo de pruebas
+- [ ] Anexo B: Métricas de calidad (SonarQube, Lighthouse)
+- [ ] Anexo C: Grabación de demo final (Loom)
+- [ ] Anexo D: Lista de credenciales entregadas (documento seguro)
+
+# 👥 Registro de Stakeholders - Biblioteca Digital v1.0
+
+## 🎯 Matriz de Poder/Interés
+| Stakeholder | Rol | Poder | Interés | Estrategia | Owner |
+|-------------|-----|-------|---------|-----------|-------|
+| María López | Sponsor (Dir. TI) | 🔴 Alto | 🔴 Alto | Gestionar de cerca | Carlos (PM) |
+| Ana Gómez | Bibliotecaria Jefe | 🟡 Media | 🔴 Alto | Mantener informado + involucrar en demos | Carlos (PM) |
+| Equipo Dev | Implementación | 🟡 Media | 🔴 Alto | Protección de tiempo + reconocimiento | Carlos (PM) |
+| Legal | Cumplimiento GDPR | 🔴 Alto | 🟡 Media | Consultar en diseño + checklist de aceptación | María (Sponsor) |
+| Soporte IT | Mantenimiento post-lanzamiento | 🟢 Baja | 🟡 Media | Documentación clara + sesión de handover | María (Backend) |
+
+## 📋 Detalle por Stakeholder Crítico
+
+### María López - Sponsor
+| Campo | Valor |
+|-------|-------|
+| **Expectativa principal** | ROI claro: reducir 40% tiempo de gestión de préstamos |
+| **Preocupación clave** | Sobrecostes por cambios no gestionados |
+| **Canal preferido** | Informe ejecutivo 1-página + reunión 15 min quincenal |
+| **Momentos clave de involucración** | Aprobación de Charter, cambios de alcance >5%, cierre de fase |
+| **Acuerdos** | • Respuesta a decisiones críticas en <48h<br>• No introducir cambios sin análisis de impacto |
+
+### Ana Gómez - Usuario Representante
+| Campo | Valor |
+|-------|-------|
+| **Expectativa principal** | Interfaz simple: préstamo en <3 clics, sin formación extensa |
+| **Preocupación clave** | Que cambien el flujo sin avisar o sin probar con usuarios reales |
+| **Canal preferido** | Demo en vivo cada sprint + feedback directo por email |
+| **Momentos clave de involucración** | Validación de prototipos, pruebas de usabilidad, UAT final |
+| **Acuerdos** | • Probar nuevas funcionalidades antes de desarrollar<br>• Reportar bugs en <24h con pasos para reproducir |
+
+## 🔄 Revisión Periódica
+- **Frecuencia:** Al inicio de cada sprint
+- **Participantes:** PM + Sponsor + Representante de Usuarios
+- **Salida:** Actualización de matriz, nuevos stakeholders, ajuste de estrategias
+- **Registro:** Issues con etiqueta `stakeholder` en GitHub
+
+# 🛠️ Acción Correctiva - AC-001: Retraso Módulo Préstamos
+
+## 📋 Información Básica
+| Campo | Valor |
+|-------|-------|
+| **ID** | AC-001 |
+| **Fecha Detección** | 20/06/2026 |
+| **Desvío Detectado** | SPI = 0.82, endpoint POST /prestamos retrasado 2 días |
+| **Impacto en Hito** | H3 (MVP staging) en riesgo de retraso +3 días |
+
+## 🔍 Análisis de Causa Raíz (5 Porqués)
+1. ¿Por qué se retrasó POST /prestamos? → Validación ISBN falla intermitentemente
+2. ¿Por qué falla? → API externa tiene timeout de 30s sin retry
+3. ¿Por qué no se detectó antes? → Pruebas de integración se hicieron en local con mock
+4. ¿Por qué no había fallback? → No se consideró en diseño inicial
+5. ¿Por qué? → Falta de análisis de riesgos para dependencias externas ✅ **Causa raíz**
+
+## ✅ Acciones Definidas
+| Acción | Owner | Fecha Límite | Criterio de Éxito | Estado |
+|--------|-------|-------------|------------------|--------|
+| Implementar mock para desarrollo frontend | @carlos | 24/06 | Frontend integra sin bloqueos | 🔄 En progreso |
+| Añadir timeout + retry + fallback regex | @maria | 26/06 | API responde <2s en 95% de casos | ⚪ Pendiente |
+| Actualizar estimaciones con buffer 20% | @pm | 24/06 | Nuevas fechas aprobadas por Sponsor | ✅ Completado |
+
+## 📊 Monitoreo
+| Fecha | SPI | CPI | Notas |
+|-------|-----|-----|-------|
+| 20/06 (detección) | 0.82 | 0.91 | Inicio acción correctiva |
+| 27/06 (seguimiento) | 0.88 | 0.93 | Mejora visible, continuar |
+| 04/07 (cierre) | 0.94 | 0.96 | ✅ Recuperado, cerrar AC-001 |
+
+## 📝 Lección Aprendida
+> *"Las dependencias externas requieren adapter layer + fallback desde el diseño, no como parche posterior."*
+
+🔗 Relacionado: [Issue #45 - Validación ISBN inestable](https://github.com/.../issues/45)
+
+# ✍️ ACTA DE ACEPTACIÓN FINAL
+## Proyecto: Biblioteca Digital - MVP v1.0
+
+### 1. Identificación
+| Campo | Valor |
+|-------|-------|
+| **Nombre del Proyecto** | Sistema de Gestión Bibliotecaria Digital |
+| **Versión Entregada** | v1.0.0 (Release 2026-09-30) |
+| **Fecha de Entrega** | 30 de septiembre de 2026 |
+| **Sponsor** | María López, Directora de Tecnologías |
+| **Usuario Final Representante** | Ana Gómez, Bibliotecaria Jefe |
+| **Project Manager** | Carlos Ruiz |
+
+---
+
+### 2. Criterios de Aceptación - Validación
+
+| Criterio | Método de Verificación | Resultado | Estado |
+|----------|----------------------|-----------|--------|
+| CRUD de libros funcional | Pruebas manuales + automatizadas | ✅ 100% casos pasando | ✅ Aceptado |
+| Endpoint GET /libros <500ms p95 | Métricas de Postman Monitoring | ✅ 342ms promedio | ✅ Aceptado |
+| Flujo de préstamo en <3 clics | Prueba de usabilidad con 3 usuarios | ✅ 2.4 clics promedio | ✅ Aceptado |
+| swagger.yaml actualizado | Revisión manual + validación online | ✅ Sin errores, 5 endpoints documentados | ✅ Aceptado |
+| Documentación en /docs/ completa | Checklist de entrega | ✅ README, INSTALACION, ADRs presentes | ✅ Aceptado |
+| Sin bugs críticos en staging | Reporte de QA + SonarQube | ✅ 0 bugs críticos, deuda técnica <5% | ✅ Aceptado |
+
+---
+
+### 3. Entregables Confirmados
+
+#### 📦 Código y Configuración
+- [x] Repositorio GitHub: `biblioteca-documentacion` (rama `main` en v1.0.0)
+- [x] Pipeline CI/CD funcional (GitHub Actions)
+- [x] Variables de entorno documentadas en `.env.example`
+
+#### 📚 Documentación
+- [x] README.md con estado y enlaces
+- [x] swagger.yaml validado en editor.swagger.io
+- [x] Diagramas UML en `/docs/diagramas/` (Draw.io + PNG)
+- [x] Guía de instalación y uso en `/docs/manual/`
+- [x] Architecture Decision Records en `/docs/adr/`
+
+#### 🧪 Calidad y Pruebas
+- [x] Cobertura de tests unitarios: 84% (>80% requerido)
+- [x] Reporte de SonarQube: 0 bugs, 2 code smells menores
+- [x] Pruebas de integración ejecutadas en staging
+
+---
+
+### 4. Conocidos / Limitaciones Aceptadas
+
+| Ítem | Descripción | Plan de Resolución |
+|------|-------------|-------------------|
+| ⚠️ Bug menor: validación ISBN falla con prefijos no estándar | Afecta <1% de casos reales | ✅ Documentado en `/docs/tech/conocidos.md`; fix programado para v1.1 |
+| ⚠️ App móvil no incluida | Acordado en cambio CHG-003 | 📅 Planificada para Fase 2 (Q1 2027) |
+| ⚠️ Integración con otras bibliotecas pendiente | Requiere protocolo Z39.50 | 🔍 En investigación técnica; no bloquea MVP |
+
+> ℹ️ *Estos ítems NO impiden la aceptación del MVP, pero quedan registrados para planificación futura.*
+
+---
+
+### 5. Firmas de Aceptación
+
+Al firmar este documento, los abajo firmantes:
+- ✅ Confirman que el producto cumple los criterios de aceptación definidos
+- ✅ Aceptan los "conocidos" listados como limitaciones no bloqueantes
+- ✅ Autorizan el cierre formal del proyecto y liberación de recursos
+
+| Rol | Nombre | Firma | Fecha |
+|-----|--------|-------|-------|
+| **Sponsor / Patrocinador** | María López | __________________ | ___/___/2026 |
+| **Usuario Final Representante** | Ana Gómez | __________________ | ___/___/2026 |
+| **Project Manager** | Carlos Ruiz | __________________ | ___/___/2026 |
+| **Legal / Compliance** (si aplica) | Departamento Jurídico | __________________ | ___/___/2026 |
+
+---
+📎 **Anexos:**
+- [ ] Anexo A: Reporte completo de pruebas
+- [ ] Anexo B: Métricas de calidad (SonarQube, Lighthouse)
+- [ ] Anexo C: Grabación de demo final (Loom)
+- [ ] Anexo D: Lista de credenciales entregadas (documento seguro)
+
+# 📊 INFORME FINAL - Biblioteca Digital v1.0
+*Proyecto cerrado: 30 de septiembre de 2026*
+
+---
+
+## 📋 Resumen Ejecutivo
+
+| Campo | Valor |
+|-------|-------|
+| **Objetivo** | MVP para gestionar préstamos de libros en biblioteca pública |
+| **Duración** | 12 semanas (01/06/2026 - 30/09/2026) |
+| **Presupuesto** | €45.000 planificado / €47.000 real (+4.4%) |
+| **Equipo** | 1 PM, 2 devs full-stack, 1 QA (50%), 1 DevOps (parcial) |
+| **Resultado** | ✅ MVP entregado, aceptado formalmente, en producción |
+
+### 🎯 Resultados Clave
+- ✅ Flujo de préstamo funcional en 2.4 clics promedio (objetivo: <3)
+- ✅ API REST documentada con 5 endpoints, respuesta p95 <500ms
+- ✅ Cobertura de tests: 84% (objetivo: ≥80%)
+- ✅ NPS de usuarios piloto: 8.2 (objetivo: ≥7)
+- ✅ 0 bugs críticos en producción post-lanzamiento
+
+---
+
+## 📊 Métricas de Éxito - Planificado vs. Real
+
+| KPI | Objetivo | Resultado | Desviación | Estado |
+|-----|----------|-----------|------------|--------|
+| Tiempo de entrega | 12 semanas | 12 semanas | 0% | ✅ En plazo |
+| Presupuesto | €45.000 | €47.000 | +4.4% | ✅ Dentro de buffer |
+| SPI final | ≥0.95 | 0.98 | +3% | ✅ Excelente |
+| CPI final | ≥0.95 | 0.97 | +2% | ✅ Excelente |
+| Cobertura tests | ≥80% | 84% | +4pp | ✅ Superado |
+| Bugs críticos en prod | 0 | 0 | 0 | ✅ Cero defectos |
+| NPS usuarios | ≥7 | 8.2 | +1.2 | ✅ Superado |
+
+---
+
+## 🔄 Lecciones Aprendidas
+
+### ✅ Qué salió bien (Repetir en futuros proyectos)
+| Lección | Impacto | Cómo institucionalizar |
+|---------|---------|----------------------|
+| Prototipar en Draw.io antes de codificar | Redujo cambios de alcance en 40% | Incluir "prototipo aprobado" en Definition of Ready |
+| swagger.yaml como contrato único | Frontend/backend trabajaron en paralelo sin bloqueos | Hacer obligatorio actualizar swagger.yaml en cada PR que cambie API |
+| Retrospectivas con acciones asignadas | Mejora continua visible: velocidad +15% sprint a sprint | Mantener formato y frecuencia; archivar en `/docs/retro/` |
+
+### ❌ Qué salió mal (Evitar en futuros proyectos)
+| Lección | Impacto | Acción Preventiva |
+|---------|---------|------------------|
+| Subestimar tiempo de pruebas de integración | Retraso de 3 días en H3 | Incluir buffer explícito para integración en estimaciones |
+| QA compartido con otro proyecto | Bugs críticos detectados tarde | Negociar dedicación mínima del 50% para QA en proyectos MVP |
+| No documentar decisiones técnicas en el momento | Reuniones de "¿por qué se hizo así?" en sprint 3 | Exigir ADR para cualquier decisión arquitectónica >1h de discusión |
+
+### 💡 Propuestas de Mejora para Próximos Proyectos
+| Propuesta | Esfuerzo | Beneficio | Owner Sugerido |
+|-----------|----------|-----------|---------------|
+| Plantilla de Issue para "scope-change" con análisis de impacto automático | 2 horas | Reducir tiempo de evaluación de cambios en 50% | @pm |
+| Dashboard automático de métricas (SPI, CPI, cobertura) con GitHub Actions | 4 horas | Visibilidad en tiempo real, menos reportes manuales | @maria |
+| Sesión de "onboarding del proyecto" grabada para nuevos miembros | 1 hora por proyecto | Reducir tiempo de ramp-up de 2 semanas a 3 días | @equipo |
+
+---
+
+## 📦 Entregables del Proyecto
+
+### 🗂️ Ubicación en Repositorio
