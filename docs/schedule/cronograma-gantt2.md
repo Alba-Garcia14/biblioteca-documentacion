@@ -24,7 +24,6 @@ gantt
     A9: UAT con usuarios      :         a9, after a8, 1d
     
     section Despliegue
-
 💡 Leyenda de estados
 ✅ Gris (:done): Completado
 
@@ -33,6 +32,7 @@ gantt
 ⚪ Blanco / Transparente: Pendiente
 
 🎯 Rombo (:milestone): Hito (duración 0)
+
     A10: Despliegue staging   :         a10, after a9, 1d
     A11: Documentación final  :         a11, after a10, 1d
     A12: Cierre del proyecto  :milestone, m1, after a11, 0d
