@@ -26,7 +26,7 @@ gantt
     section Despliegue
     A10: Despliegue staging   :         a10, after a9, 1d
     A11: Documentación final  :         a11, after a10, 1d
-    A12: Cierre del proyecto  :milestone, m1, after a11, 0d
+    A12: Cierre del proyecto  :milestone, m1, after a11, 0d```
 
     💡 Leyenda de estados
 ✅ Gris (:done): Completado
@@ -35,4 +35,4 @@ gantt
 
 ⚪ Blanco / Transparente: Pendiente
 
-🎯 Rombo (:milestone): Hito (duración 0)
+🎯 Rombo (:milestone): Hito (duración 0)   
