@@ -29,7 +29,6 @@ gantt
     A12: Cierre del proyecto  :milestone, m1, after a11, 0d
 ```
 
-
 💡 Leyenda de estados
 ✅ Gris (:done): Completado
 
