@@ -1,30 +1,14 @@
-# 🗓️ Cronograma de Trabajo - Biblioteca Digital v1.0
+## Cronograma del proyecto
 
-```mermaid
-gantt
-    title Biblioteca Digital v1.0
-    dateFormat  YYYY-MM-DD
-    axisFormat  %d/%m
-    
-    section Diseño
-    A1: Diseñar ERD           :done,    2026-06-01, 1d
-    A2: Esquema BD            :done,    1d
-    A3: swagger.yaml          :active,  2d
-    
-    section Backend
-    A4: GET /libros           :         1d
-    A5: POST /libros          :         2d
-    
-    section Frontend
-    A6: Listado de libros     :         2d
-    A7: Formulario prestamo   :         1d
-    
-    section Calidad
-    A8: Tests integracion     :         1d
-    A9: UAT con usuarios      :         1d
-    
-    section Despliegue
-    A10: Despliegue staging   :         1d
-    A11: Documentacion final  :         1d
-    A12: Cierre del proyecto  :milestone, 0d 
-    ```
+- Diseño ERD (1 día)
+- Esquema BD (1 día)
+- Swagger (2 días)
+- GET /libros (1 día)
+- POST /libros (2 días)
+- Listado de libros (2 días)
+- Formulario préstamo (1 día)
+- Tests integración (1 día)
+- UAT con usuarios (1 día)
+- Despliegue staging (1 día)
+- Documentación final (1 día)
+- Cierre del proyecto
