@@ -24,5 +24,5 @@ gantt
     section Despliegue
     A10: Despliegue staging  :after A9, 1d
     A11: Documentacion final :after A10, 1d
-    A12: Cierre del proyecto :milestone, after A11, 0d
+    A11: Documentacion final :after A10, 1d
 ```
